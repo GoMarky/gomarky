@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "es2015",
+    "baseUrl": ".",
+    "moduleResolution": "node",
+    "lib": [
+      "es6",
+      "dom",
+      "es2017"
+    ],
+    "sourceMap": false,
+    "noEmit": true,
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": true,
+    "removeComments": false,
+    "noImplicitAny": true,
+    "strict": true,
+    "jsx": "react",
+    "strictPropertyInitialization": false,
+    "allowSyntheticDefaultImports": true,
+    "importHelpers": true,
+    "pretty": true,
+    "resolveJsonModule": true,
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
+  },
+  "files": ["global.d.ts"],
+  "include": [
+    "*.ts",
+    "*.tsx",
+    "src/**/*",
+    "global.d.ts",
+    "extensions/**/*",
+    "types/**/*",
+    "vue-global.d.ts",
+    "vue-module.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

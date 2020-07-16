@@ -1,0 +1,11 @@
+prettier.config.js
+.commitlintrc.js
+jest.config.js
+
+test/unit/coverage/**
+test/unit/*.js
+test/e2e/*.js
+
+/config/
+/build/
+/dist/

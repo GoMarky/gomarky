@@ -1,0 +1,19 @@
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+  <!-- Generator: Sketch 52.3 (67297) - http://www.bohemiancoding.com/sketch -->
+  <title>cursor/eraser_oval</title>
+  <desc>Created with Sketch.</desc>
+  <defs>
+    <circle id="path-1" cx="12" cy="12" r="8"></circle>
+  </defs>
+  <g id="cursor/eraser_oval" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <rect fill="#000000" x="0" y="0" width="24" height="24"></rect>
+    <g id="cursor/rotate">
+      <polygon id="shape" points="0 0 24 0 24 24 0 24"></polygon>
+      <g id="oval" stroke-dasharray="3,3">
+        <use stroke="#FFFFFF" stroke-width="3" xlink:href="#path-1"></use>
+        <use stroke="#000000" stroke-width="1" xlink:href="#path-1"></use>
+      </g>
+    </g>
+  </g>
+</svg>

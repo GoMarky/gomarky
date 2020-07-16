@@ -1,0 +1,12 @@
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.3 (67297) - http://www.bohemiancoding.com/sketch -->
+    <title>cursor/rotate</title>
+    <desc>Created with Sketch.</desc>
+    <g id="cursor/rotate" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#000000" x="0" y="0" width="24" height="24"></rect>
+        <g>
+            <polygon id="shape" points="0 0 24 0 24 24 0 24"></polygon>
+            <path d="M13,3 L13,0 L9,4 L13,8 L13,5 C16.31,5 19,7.69 19,11 L16,11 L20,15 L24,11 L21,11 C21,6.58 17.42,3 13,3 Z" id="Shape" stroke="#FFFFFF" fill="#000000" fill-rule="nonzero"></path>
+        </g>
+    </g>
+</svg>

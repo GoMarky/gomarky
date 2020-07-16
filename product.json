@@ -1,7 +1,7 @@
 {
   "nameShort": "GoMarky",
-  "nameLong": "GoMarky",
-  "win32AppUserModelId": "Gomarky",
+  "nameLong": "GoMarky Markup",
+  "win32AppUserModelId": "GoMarky",
   "date": "",
-  "metaFolderName": ".gomarky"
+  "metaFolderName": ".osai"
 }
