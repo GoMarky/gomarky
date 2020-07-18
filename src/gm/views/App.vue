@@ -1,16 +1,10 @@
 <template>
   <div id="app">
-    <router-view />
-    <div class="notification-list">
-      <template v-for="(notification, index) in this.notifications">
-        <notification :key="index" :notification="notification" />
-      </template>
-    </div>
-    <component :is="this.modal" />
+    Go Marky, Go!
   </div>
 </template>
 
-<script lang="ts" src="App.ts"></script>
+<script lang="ts" src="./App.ts"></script>
 
 <style lang="scss">
 .notification-list {

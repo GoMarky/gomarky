@@ -1,17 +1,18 @@
 {
   "compilerOptions": {
     "target": "es2015",
-    "module": "es2015",
+    "module": "esnext",
     "baseUrl": ".",
     "moduleResolution": "node",
     "lib": [
       "es6",
       "dom",
-      "es2017"
+      "es2017",
+      "es2019"
     ],
     "sourceMap": false,
-    "noEmit": true,
-    "declaration": true,
+    "noEmit": false,
+    "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "noUnusedLocals": false,
@@ -19,7 +20,7 @@
     "removeComments": false,
     "noImplicitAny": true,
     "strict": true,
-    "jsx": "react",
+    "jsx": "preserve",
     "strictPropertyInitialization": false,
     "allowSyntheticDefaultImports": true,
     "importHelpers": true,
@@ -31,15 +32,11 @@
       ]
     }
   },
-  "files": ["global.d.ts"],
   "include": [
     "*.ts",
     "*.tsx",
     "src/**/*",
     "global.d.ts",
-    "extensions/**/*",
-    "types/**/*",
-    "vue-global.d.ts",
     "vue-module.d.ts"
   ],
   "exclude": [

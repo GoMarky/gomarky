@@ -14,9 +14,6 @@ module.exports = {
     '@vue/prettier/@typescript-eslint',
   ],
   rules: {
-    // TODO: write an correct rule. (this time indent with 2 spaces has errors for some reason)
-    // 'indent': ['error', 2],
-
     'no-prototype-builtins': 0,
 
     '@typescript-eslint/no-explicit-any': 0,

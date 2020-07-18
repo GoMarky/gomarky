@@ -316,7 +316,8 @@ export class CodeWindow extends Disposable implements ICodeWindow {
 
     const configuration = Object.assign({}, config);
     configuration.session = this.sessionMainService.configuration;
-    this._win.loadURL(this.getUrl(configuration)).then(() => this._onLoad.fire());
+
+    void this._win.loadURL(this.getUrl(configuration)).then(() => this._onLoad.fire());
   }
 
   public getBounds(): Electron.Rectangle {
@@ -418,6 +419,7 @@ export class CodeWindow extends Disposable implements ICodeWindow {
       clearTimeout(this.showTimeoutHandle);
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     this._win = null!;
   }
 

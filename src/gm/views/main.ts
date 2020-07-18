@@ -67,6 +67,8 @@ export class CodeRenderer extends Disposable {
       autoRepeat: true,
     });
 
+    debugger;
+
     return services;
   }
 
