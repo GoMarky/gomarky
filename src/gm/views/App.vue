@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    Go Marky, Go!
+    <canvas class="gomarky-scene" id="canvas" />
   </div>
 </template>
 

@@ -10,10 +10,7 @@ export interface IApplication {
   readonly select: RangeSelect;
   readonly scene: Scene;
 
-  readonly meta: IMetaOptions;
-
-  init(options: PIXI.ApplicationOptions): this;
-  dispose(): void;
+  readonly meta?: IMetaOptions;
 }
 
 export interface IMetaOptions {
@@ -25,14 +22,22 @@ export interface IMetaOptions {
 
 export class Application extends Disposable implements IApplication {
   private readonly _app: PIXI.Application;
-  private _viewport: Viewport;
+  private readonly _viewport: Viewport;
   private readonly _select: RangeSelect;
 
-  constructor(options: PIXI.ApplicationOptions, public meta: IMetaOptions) {
+  constructor(options: PIXI.ApplicationOptions, public meta?: IMetaOptions) {
     super();
 
     this._app = new PIXI.Application(options);
     this._select = new RangeSelect(this);
+
+    const viewport = (this._viewport = this.createViewport({
+      width: options.width as number,
+      height: options.height as number,
+      elementSelector: '.gomarky-scene',
+    }));
+
+    viewport.createScene();
   }
 
   public get app(): PIXI.Application {
@@ -49,22 +54,6 @@ export class Application extends Disposable implements IApplication {
 
   public get scene(): Scene {
     return this._viewport.scene;
-  }
-
-  public init(options: PIXI.ApplicationOptions): this {
-    this._viewport = this.createViewport({
-      width: options.width as number,
-      height: options.height as number,
-      elementSelector: '.gomarky-scene',
-    });
-
-    this._viewport.createScene();
-
-    return this;
-  }
-
-  public dispose(): void {
-    super.dispose();
   }
 
   private createViewport(options: ICreateViewportOptions): Viewport {

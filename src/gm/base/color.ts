@@ -193,7 +193,7 @@ export interface ISerializedRGBA {
 }
 
 export class Color {
-  readonly rgba: ColorRGBA;
+  public readonly rgba: ColorRGBA;
   private readonly _hsla: ColorHSLA;
   private readonly _hsva: ColorHSVA;
 
@@ -204,7 +204,7 @@ export class Color {
       this.rgba = arg;
     } else if (arg instanceof ColorHSLA) {
       this._hsla = arg;
-      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       this.rgba = ColorHSLA.toRGBA(arg);
     } else if (arg instanceof ColorHSVA) {
@@ -287,5 +287,5 @@ export class Color {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  public equals(_color: Color) {}
+  public equals(_color: Color): void {}
 }

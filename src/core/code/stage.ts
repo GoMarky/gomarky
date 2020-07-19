@@ -3,6 +3,7 @@ import * as PIXI from 'pixi.js';
 import { Disposable } from '@/gm/base/common/lifecycle';
 import { Emitter, Event as CommonEvent, GlobalEvent } from '@/gm/base/common/event';
 import { getImageInfo } from '@/gm/base/common/mime';
+
 import {
   CurrentLayerProperty,
   LayerGroup,
@@ -13,8 +14,15 @@ import {
   Layer,
   CurrentLayerSetEvent,
   Application,
-  handleSelectBounds, multiClickHandler, Stage, ITextureRenderEvent, CurrentTextureProperty, TextureImage, TextureVideo,
+  handleSelectBounds,
+  multiClickHandler,
+  Stage,
+  ITextureRenderEvent,
+  CurrentTextureProperty,
+  TextureImage,
+  TextureVideo,
 } from '@/core';
+
 import { RangeSelectEvent } from '@/core/code/range';
 import { URI } from '@/gm/base/common/uri';
 
@@ -160,7 +168,7 @@ export class Scene extends Disposable {
 
     // ._bounds property allow access to minX/minY/maxX/maxY properties, but it is protected :(
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     interface PublicBoundsContainer extends PIXI.Container {
       _bounds: PIXI.Bounds;
