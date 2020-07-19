@@ -5,7 +5,7 @@ import { generateUuid } from '@/gm/base/common/uuid';
 import { MaskType } from '@/core/utils/model';
 import { ISerializedLayer } from '@/core/objects/geometry/layer/common/layer';
 import { LayerGroup } from '@/core/objects/geometry/layer/layerGroup';
-import { Scene } from '@/core/code/stage';
+import { Scene } from '@/core/code/scene';
 import { CommonLayer } from '@/core/objects/geometry/layer/common/layerGroup';
 import { Application } from '@/core/code/application';
 import { Container } from '@/core/objects/geometry/container/container';

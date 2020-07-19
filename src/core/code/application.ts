@@ -3,7 +3,7 @@ import * as PIXI from 'pixi.js';
 import { Disposable } from '@/gm/base/common/lifecycle';
 import { Viewport } from '@/core/code/viewport';
 
-import { Scene } from '@/core/code/stage';
+import { Scene } from '@/core/code/scene';
 import { ICreateViewportOptions } from '@/core/base/viewport';
 import { ILayerHooks, IRootLayerHooks } from '@/core/objects/geometry/layer/common/layer';
 import { PluginRegistry } from '@/core/utils/plugins';
@@ -33,9 +33,11 @@ export class Application extends Disposable implements IApplication {
 
     this._app = new PIXI.Application(options);
 
+    const { width, height } = options;
+
     const viewport = (this._viewport = this.createViewport({
-      width: options.width as number,
-      height: options.height as number,
+      width: width as number,
+      height: height as number,
       elementSelector: '.gomarky-scene',
     }));
 

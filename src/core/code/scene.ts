@@ -4,7 +4,6 @@ import { Disposable } from '@/gm/base/common/lifecycle';
 import { Emitter, Event as CommonEvent, GlobalEvent } from '@/gm/base/common/event';
 import { getImageInfo } from '@/gm/base/common/mime';
 
-import { RangeSelectEvent } from '@/core/code/range';
 import { URI } from '@/gm/base/common/uri';
 import {
   CurrentLayerProperty,
@@ -20,10 +19,11 @@ import {
 import { Shape } from '@/core/objects/geometry/shape/shape';
 import { MaskType, ShapeType, Stage } from '@/core/utils/model';
 import { multiClickHandler } from '@/core/utils/mouse';
+
 import { TextureVideo } from '@/core/objects/textures/video';
 import { Layer } from '@/core/objects/geometry/layer/layer';
 import { TextureImage } from '@/core/objects/textures/image';
-import { handleSelectBounds } from '@/core/code/geometry';
+
 import { Application } from '@/core/code/application';
 
 const DELAY_DOUBLE_CLICK_TIME = 200;

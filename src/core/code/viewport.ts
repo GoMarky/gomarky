@@ -4,7 +4,7 @@ import { Disposable } from '@/gm/base/common/lifecycle';
 
 import { Event } from '@/gm/base/common/event';
 import { Application } from '@/core/code/application';
-import { Scene } from '@/core/code/stage';
+import { Scene } from '@/core/code/scene';
 import { ICreateViewportOptions } from '@/core/base/viewport';
 
 export class Viewport extends Disposable {
@@ -22,17 +22,24 @@ export class Viewport extends Disposable {
   public onZoomViewport: Event<void>;
   public onZoomViewportEnd: Event<void>;
 
-  constructor(private readonly app: Application, options: ICreateViewportOptions) {
+  constructor(private readonly stage: Application, options: ICreateViewportOptions) {
     super();
 
+    const { width, height } = options;
+
     this._screen = new PIXIViewport({
-      screenHeight: options.height,
-      screenWidth: options.width,
+      screenHeight: height,
+      screenWidth: width,
       worldWidth: Viewport.WorldWidthMax,
       worldHeight: Viewport.WorldHeightMax,
       divWheel: document.querySelector(options.elementSelector) as HTMLCanvasElement,
-      interaction: this.app.app.renderer.plugins.interaction,
+      interaction: this.stage.app.renderer.plugins.interaction,
     });
+
+    const canvasElement = this.stage.app.view;
+
+    canvasElement.style.setProperty('width', `${width}px`);
+
     this.doCreate();
   }
 
@@ -45,9 +52,9 @@ export class Viewport extends Disposable {
   }
 
   public createScene(): void {
-    this._scene = new Scene(this.app);
+    this._scene = new Scene(this.stage);
     this.screen.addChild(this._scene.root.containerGroup.frame);
-    this.registerTicker();
+    this.registerListeners();
 
     this.doCreate();
   }
@@ -64,7 +71,7 @@ export class Viewport extends Disposable {
     super.dispose();
   }
 
-  private registerTicker(): void {
+  private registerListeners(): void {
     this.onZoomViewport = Event.fromNodeEventEmitter<void>(
       this._screen as Event.NodeEventEmitter,
       'zoomed'
@@ -75,7 +82,20 @@ export class Viewport extends Disposable {
       'zoomed-end'
     );
 
-    this._screen.on('zoomed', () => {
+    const onResizeHandler = () => {
+      const { innerWidth, innerHeight } = window;
+      const { view: canvasElement } = this.stage.app;
+
+      canvasElement.width = innerWidth;
+      canvasElement.style.setProperty('width', `${innerWidth}px`);
+
+      this.stage.app.renderer.resize(innerWidth, innerHeight);
+      this.stage.viewport.screen.resize(innerWidth, innerHeight);
+    };
+
+    window.addEventListener('resize', onResizeHandler);
+
+    const onZoomHandler = () => {
       const { worldScreenWidth, worldScreenHeight } = this._screen;
 
       const isWorldBoundsMaxValue =
@@ -90,7 +110,9 @@ export class Viewport extends Disposable {
       if (isWorldBoundsMinValue) {
         this._screen.fit(false, Viewport.WorldWidthMin, Viewport.WorldHeightMin);
       }
-    });
+    };
+
+    this._screen.on('zoomed', onZoomHandler);
   }
 
   private doCreate(): void {
@@ -98,6 +120,6 @@ export class Viewport extends Disposable {
 
     this._screen.plugins.pause('drag');
     this._screen.interactive = true;
-    this.app.app.stage.addChild(this.screen);
+    this.stage.app.stage.addChild(this.screen);
   }
 }
