@@ -45,7 +45,7 @@ import store from '@/gm/platform/store/electron-browser';
 import { WorkspacesService } from '@/gm/platform/workspaces/electron-browser/workspacesService';
 import { IWorkspacesService } from '@/gm/platform/workspaces/common/workspaces';
 
-const windowConfiguration: Required<IWindowConfiguration> = window.GoMarky_WIN_CONFIGURATION;
+const windowConfiguration: Required<IWindowConfiguration> = window.GOMARKY_WIN_CONFIGURATION;
 
 const services = new ServiceCollection();
 

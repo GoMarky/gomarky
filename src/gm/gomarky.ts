@@ -19,19 +19,20 @@ declare module 'gomarky' {
      * @return Returns a new disposable which, upon dispose, will
      * dispose all provided disposables.
      */
-    static from(...disposableLikes: { dispose: () => any }[]): Disposable;
+    public static from(...disposableLikes: { dispose: () => any }[]): Disposable;
 
     /**
      * Creates a new Disposable calling the provided function
      * on dispose.
      * @param callOnDispose Function that disposes something.
      */
+    // eslint-disable-next-line @typescript-eslint/ban-types
     constructor(callOnDispose: Function);
 
     /**
      * Dispose this object.
      */
-    dispose(): any;
+    public dispose(): any;
   }
 
   export interface Event<T> {

@@ -3,7 +3,7 @@ import { FunctionLike } from '@/gm/base/common/types';
 import { IDisposable } from '@/gm/base/common/lifecycle';
 
 import { IServicesAccessor } from '@/gm/platform/instantiation/common/instantiation';
-import { CommandImpl } from '@/gm/platform/commands/electron-browser/commands';
+import { CommandImplementation } from '@/gm/platform/commands/electron-browser/commands';
 
 export interface ICommandExecuteBody {
   execute: FunctionLike;
@@ -38,7 +38,7 @@ export interface ICommandRegistry {
   onDidRegisterCommand: Event<string>;
 
   registerCommand(command: ICommand): IDisposable;
-  registerCommand(id: string, command: (accessor: IServicesAccessor) => CommandImpl): IDisposable;
+  registerCommand(id: string, command: (accessor: IServicesAccessor) => CommandImplementation): IDisposable;
 
   getCommand(id: string): ICommand | undefined;
   hasCommand(id: string): boolean;

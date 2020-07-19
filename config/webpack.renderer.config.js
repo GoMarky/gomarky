@@ -27,7 +27,7 @@ let whiteListedModules = ['vue']
 const entries = [
   {
     name: 'main',
-    path: '../src/gm/views/main.ts'
+    path: '../src/gm/views/workspace/workspace.ts'
   },
 ]
 

@@ -19,7 +19,7 @@ const gitRevision = {
 
 let mainConfig = {
   entry: {
-    main: join(__dirname, "../src/gm/setup.ts"),
+    main: join(__dirname, "../src/setup.ts"),
   },
   externals: [
     ...Object.keys(dependencies || {}),

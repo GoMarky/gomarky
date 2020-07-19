@@ -1,17 +1,12 @@
 import { app } from 'electron';
-import pkg from '../../package.json';
-import { getDefaultUserDataPath } from '@/gm/paths';
+import pkg from '../package.json';
+import { getDefaultUserDataPath } from '@/paths';
 
 import { isDev, isProd, isTest, LANGUAGE_DEFAULT } from '@/gm/base/platform';
 import { join } from 'path';
 import { getNLSConfig } from '@/gm/base/node/language';
 
 import { mkdir, readFile } from '@/gm/base/node/pfs';
-import * as Sentry from '@sentry/electron';
-
-if (isProd) {
-  Sentry.init({ dsn: 'https://1c3838524dc74daa80772f8ecab81c28@o217651.ingest.sentry.io/5247498' });
-}
 
 const userDataPath = getDefaultUserDataPath(process.platform);
 
@@ -50,6 +45,7 @@ function setElectronEnvironment(): void {
   process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = 'true';
 
   void app.whenReady().then(() => {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports,@typescript-eslint/no-var-requires
     const installExtension = require('electron-devtools-installer');
     installExtension.default(installExtension.VUEJS_DEVTOOLS);
   });
@@ -75,7 +71,7 @@ function registerGlobalListeners() {
   });
 }
 
-app.whenReady().then(async () => {
+void app.whenReady().then(async () => {
   await onReady();
 });
 
@@ -92,7 +88,7 @@ async function onReady(): Promise<void> {
    * Require our main program.
    * */
 
-  require('./main');
+  await import('./main');
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

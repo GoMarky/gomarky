@@ -6,7 +6,7 @@ import { ILogService } from '@/gm/platform/log/common/log';
 import { Workbench } from '@/gm/code/electron-browser/workbench/workbench';
 
 import {
-  CommandImpl,
+  CommandImplementation,
   CommandsRegistry,
   ICommandService,
 } from '@/gm/platform/commands/electron-browser/commands';
@@ -48,11 +48,11 @@ export class CodeRenderer extends Disposable {
 
     CommandsRegistry.registerCommand(
       'gomarky.command.redo',
-      () => new CommandImpl(() => commandService.redoCommand())
+      () => new CommandImplementation(() => commandService.redoCommand())
     );
     CommandsRegistry.registerCommand(
       'gomarky.command.undo',
-      () => new CommandImpl(() => commandService.undoCommand())
+      () => new CommandImplementation(() => commandService.undoCommand())
     );
 
     await keyboardService.registerShortcut({
@@ -66,8 +66,6 @@ export class CodeRenderer extends Disposable {
       accelerator: 'CmdOrCtrl+Shift+Z',
       autoRepeat: true,
     });
-
-    debugger;
 
     return services;
   }
@@ -84,9 +82,9 @@ export class CodeRenderer extends Disposable {
   }
 }
 
-export function createRenderer(): Promise<ServiceCollection> {
+export async function createRenderer(): Promise<ServiceCollection> {
   const renderer = new CodeRenderer();
-  const services = require('./descriptors').default;
+  const services = (await import('./descriptors')).default;
 
   const instantiationService = services.get(IInstantiationService);
 

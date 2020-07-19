@@ -53,7 +53,7 @@ export class CommandEvent extends GlobalEvent {
   }
 }
 
-export class CommandImpl<T = any> extends Disposable implements ICommandExecuteBody {
+export class CommandImplementation<T = any> extends Disposable implements ICommandExecuteBody {
   constructor(
     public readonly execute: (...args: any[]) => T,
     public readonly undo?: (...args: any[]) => T,
@@ -65,8 +65,9 @@ export class CommandImpl<T = any> extends Disposable implements ICommandExecuteB
 
 export const CommandsRegistry: ICommandRegistry = new (class implements ICommandRegistry {
   private readonly _onDidRegisterCommand = new Emitter<string>();
+  private readonly _commands: Map<string, ICommand> = new Map();
+
   public readonly onDidRegisterCommand: Event<string> = this._onDidRegisterCommand.event;
-  private _commands: Map<string, ICommand> = new Map();
 
   public getCommand(id: string): ICommand | undefined {
     return this._commands.get(id);
@@ -134,7 +135,7 @@ export class CommandService extends Disposable implements ICommandService {
   private readonly _contextService: IContextCommandService;
 
   constructor(
-    @IInstantiationService readonly instantiationService: IInstantiationService,
+    @IInstantiationService private readonly instantiationService: IInstantiationService,
     @ILifecycleService private readonly lifecycleService: ILifecycleService,
     @ILogService private readonly logService: ILogService
   ) {
