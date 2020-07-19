@@ -1,14 +1,14 @@
 import * as PIXI from 'pixi.js';
+import { Geometry } from '@/core/objects/geometry/geometry/geometry';
+import { Application } from '@/core/code/application';
 import {
-  Application,
-  ControlPoint,
   ICreateGeometryOptions,
   ISerializedEllipse,
   IShapeDrawOptions,
-  ShapeType, Stage, toDoubleDimensionArray,
-} from '@/core';
-import { Geometry } from '@/core/objects/geometry/geometry/geometry';
-
+} from '@/core/base/geometry';
+import { ShapeType, Stage } from '@/core/utils/model';
+import { ControlPoint } from '@/core/objects/geometry/geometry/points/controlpoint';
+import { toDoubleDimensionArray } from '@/core/objects/geometry/geometry/polygon';
 
 export class Ellipse extends Geometry {
   private lastEvent: PIXI.interaction.InteractionEvent | null = null;

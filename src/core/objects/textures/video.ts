@@ -1,12 +1,8 @@
 import { Disposable } from '@/gm/base/common/lifecycle';
 import { URI } from '@/gm/base/common/uri';
-import {
-  Application,
-  calculateAspectRatio,
-  ICreateVideoTextureOptions,
-  ISerializedTexture,
-  IVideoTexture,
-} from '@/core';
+import { calculateAspectRatio } from '@/core/utils/media';
+import { ICreateVideoTextureOptions, ISerializedTexture, IVideoTexture } from '@/core/base/media';
+import { Application } from '@/core/code/application';
 
 export class TextureVideo extends Disposable implements IVideoTexture {
   private readonly _texture: PIXI.Texture;

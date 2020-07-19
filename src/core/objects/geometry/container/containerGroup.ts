@@ -1,8 +1,9 @@
 import { Application } from '@/core/code/application';
 import { AbstractContainer } from '@/core/objects/geometry/container/abstractContainer';
-import { CommonContainer, ISerializedGeometry } from '@/core';
 
 import { Event } from '@/gm/base/common/event';
+import { CommonContainer } from '@/core/base/container';
+import { ISerializedGeometry } from '@/core/base/geometry';
 
 export class ContainerGroup extends AbstractContainer {
   private readonly _children: CommonContainer[] = [];

@@ -16,7 +16,7 @@ import { Ellipse } from '@/core/objects/geometry/geometry/ellipse';
 
 import { AbstractContainer } from '@/core/objects/geometry/container/abstractContainer';
 import { Shape } from '@/core/objects/geometry/shape/shape';
-import { Application } from '@/core';
+import { Application } from '@/core/code/application';
 
 export class Container extends AbstractContainer {
   constructor(
@@ -98,7 +98,7 @@ export class Container extends AbstractContainer {
   };
 
   public remove(): void {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     this.parentLayer.parent?.containerGroup.frame.removeChild(this.frame);
   }

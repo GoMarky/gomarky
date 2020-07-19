@@ -2,15 +2,13 @@ import { Disposable } from '@/gm/base/common/lifecycle';
 import { IWorkspacePage } from '@/gm/code/electron-browser/page/common/page';
 
 import { generateUuid } from '@/gm/base/common/uuid';
-import {
-  Application,
-  CommonLayer,
-  Container,
-  ISerializedLayer,
-  LayerGroup,
-  MaskType,
-  Scene,
-} from '@/core';
+import { MaskType } from '@/core/utils/model';
+import { ISerializedLayer } from '@/core/objects/geometry/layer/common/layer';
+import { LayerGroup } from '@/core/objects/geometry/layer/layerGroup';
+import { Scene } from '@/core/code/stage';
+import { CommonLayer } from '@/core/objects/geometry/layer/common/layerGroup';
+import { Application } from '@/core/code/application';
+import { Container } from '@/core/objects/geometry/container/container';
 
 export enum UpdateTick {
   None,
@@ -59,8 +57,8 @@ export abstract class Layer extends Disposable {
 
     const isRoot = _name === Scene.RootName;
 
-    const rootHook = app.meta.hooks.root;
-    const layerHook = app.meta.hooks.layer;
+    const rootHook = app.meta?.hooks.root;
+    const layerHook = app.meta?.hooks.layer;
 
     const proxyRootHandler: ProxyHandler<Layer> = {
       set: (layer, key, value) => {
@@ -74,7 +72,7 @@ export abstract class Layer extends Disposable {
           const _layer = value?.child;
 
           if (_layer) {
-            rootHook.onAddLayer(_layer);
+            rootHook?.onAddLayer(_layer);
           }
 
           return true;
@@ -84,7 +82,7 @@ export abstract class Layer extends Disposable {
           const _layer = value?.child;
 
           if (_layer) {
-            rootHook.onRemoveLayer(_layer);
+            rootHook?.onRemoveLayer(_layer);
           }
         }
 
@@ -96,7 +94,7 @@ export abstract class Layer extends Disposable {
       set: (layer, key, value) => {
         (layer as any)[key] = value;
 
-        layerHook.onUpdateLayer(layer);
+        layerHook?.onUpdateLayer(layer);
 
         return true;
       },

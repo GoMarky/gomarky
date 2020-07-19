@@ -1,16 +1,14 @@
 import { Geometry } from '@/core/objects/geometry/geometry/geometry';
-import {
-  Application,
-  ICreateGeometryOptions,
-  Polygon,
-  Rectangle,
-  ShapeType,
-  Ellipse,
-  GlCoreError,
-  Layer,
-  Container,
-  ControlPoint,
-} from '@/core';
+import { Application } from '@/core/code/application';
+import { ShapeType } from '@/core/utils/model';
+import { ICreateGeometryOptions } from '@/core/base/geometry';
+import { Rectangle } from '@/core/objects/geometry/geometry/rectangle';
+import { GlCoreError } from '@/core/utils/errors';
+import { ControlPoint } from '@/core/objects/geometry/geometry/points/controlpoint';
+import { Layer } from '@/core/objects/geometry/layer/layer';
+import { Ellipse } from '@/core/objects/geometry/geometry/ellipse';
+import { Container } from '@/core/objects/geometry/container/container';
+import { Polygon } from '@/core/objects/geometry/geometry/polygon';
 
 function createShape(
   type: ShapeType,

@@ -3,7 +3,8 @@ import * as PIXI from 'pixi.js';
 import { Event } from '@/gm/base/common/event';
 import { Disposable } from '@/gm/base/common/lifecycle';
 import { generateUuid } from '@/gm/base/common/uuid';
-import { Application, ISerializedGeometry } from '@/core';
+import { Application } from '@/core/code/application';
+import { ISerializedGeometry } from '@/core/base/geometry';
 
 export abstract class AbstractContainer extends Disposable {
   protected _selected = false;

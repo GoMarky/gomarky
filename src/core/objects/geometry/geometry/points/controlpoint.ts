@@ -1,13 +1,10 @@
 import * as PIXI from 'pixi.js';
 import { Color } from '@/gm/base/color';
-import {
-  Application,
-  BasePoint,
-  Container,
-  IColorBasedProperties,
-  IPointCreateOptions,
-  Point,
-} from '@/core';
+import { IColorBasedProperties, IPointCreateOptions } from '@/core/base/geometry';
+import { BasePoint } from '@/core/objects/geometry/geometry/points/basepoint';
+import { Container } from '@/core/objects/geometry/container/container';
+import { Point } from '@/core/utils/model';
+import { Application } from '@/core/code/application';
 
 export class ControlPoint extends BasePoint implements IColorBasedProperties {
   constructor(app: Application, parent: Container, options: IPointCreateOptions) {

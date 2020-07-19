@@ -1,12 +1,11 @@
 import {
-  Application,
   CommonLayer,
   CommonSerializedLayer,
-  ContainerGroup,
   ISerializedGroupLayer,
-  Layer,
-  UpdateTick,
-} from '@/core';
+} from '@/core/objects/geometry/layer/common/layerGroup';
+import { Layer, UpdateTick } from '@/core/objects/geometry/layer/layer';
+import { ContainerGroup } from '@/core/objects/geometry/container/containerGroup';
+import { Application } from '@/core/code/application';
 
 export class LayerGroup extends Layer {
   private readonly _children: CommonLayer[] = [];

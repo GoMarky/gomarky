@@ -1,12 +1,9 @@
 import { GlobalEvent } from '@/gm/base/common/event';
-import {
-  CurrentLayerProperty,
-  ISerializedGroupLayer,
-  Layer,
-  LayerGroup,
-  MaskType,
-  ShapeType,
-} from '@/core';
+import { MaskType, ShapeType } from '@/core/utils/model';
+import { ISerializedGroupLayer } from '@/core/objects/geometry/layer/common/layerGroup';
+import { Layer } from '@/core/objects/geometry/layer/layer';
+import { LayerGroup } from '@/core/objects/geometry/layer/layerGroup';
+import { CurrentLayerProperty } from '@/core/base/stage';
 
 export interface ISerializedLayer {
   readonly id: string;

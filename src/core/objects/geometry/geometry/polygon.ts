@@ -9,7 +9,7 @@ import {
 
 import { Geometry } from '@/core/objects/geometry/geometry/geometry';
 import { ControlPoint } from '@/core/objects/geometry/geometry/points/controlpoint';
-import { Application } from '@/core';
+import { Application } from '@/core/code/application';
 
 export class Polygon extends Geometry {
   private sides: number[][][] = [];
@@ -149,7 +149,7 @@ export class Polygon extends Geometry {
   public serialize(): ISerializedPolygon {
     return {
       ...super.serialize(),
-      points: toDoubleDimensionArray(this._points),
+      points: toDoubleDimensionArray(this._points) as any,
     };
   }
 

@@ -9,8 +9,8 @@ import { ILifecycleService, LifePhase } from '@/gm/platform/lifecycle/common/lif
 import VueRouter from 'vue-router';
 import VueCompositionApi from '@vue/composition-api';
 
-import * as GMCore from '@/core';
 import PIXI from 'pixi.js';
+import { Application } from '@/core/code/application';
 
 Vue.use(VueRouter);
 Vue.use(VueCompositionApi);
@@ -62,7 +62,7 @@ async function main(): Promise<void> {
     transparent: false,
   };
 
-  new GMCore.Application(options);
+  new Application(options);
 }
 
 void main();

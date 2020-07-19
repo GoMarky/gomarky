@@ -1,13 +1,9 @@
 import * as PIXI from 'pixi.js';
 import { Disposable } from '@/gm/base/common/lifecycle';
-import {
-  Application,
-  calculateAspectRatio,
-  ICreateTextureImageOption,
-  ISerializedTexture,
-  ITextureImage,
-} from '@/core';
 import { URI } from '@/gm/base/common/uri';
+import { calculateAspectRatio } from '@/core/utils/media';
+import { ICreateTextureImageOption, ISerializedTexture, ITextureImage } from '@/core/base/media';
+import { Application } from '@/core/code/application';
 
 export class TextureImage extends Disposable implements ITextureImage {
   private readonly _source: URI;

@@ -1,15 +1,14 @@
 import * as PIXI from 'pixi.js';
 import { Geometry } from '@/core/objects/geometry/geometry/geometry';
+import { Application } from '@/core/code/application';
 import {
-  Application,
-  ControlPoint,
   ICreateGeometryOptions,
   ISerializedRectangle,
   IShapeDrawOptions,
-  ShapeType,
-  Stage,
-  toDoubleDimensionArray,
-} from '@/core';
+} from '@/core/base/geometry';
+import { ShapeType, Stage } from '@/core/utils/model';
+import { ControlPoint } from '@/core/objects/geometry/geometry/points/controlpoint';
+import { toDoubleDimensionArray } from '@/core/objects/geometry/geometry/polygon';
 
 export class Rectangle extends Geometry {
   private lastEvent: PIXI.interaction.InteractionEvent | null = null;
@@ -171,7 +170,7 @@ export class Rectangle extends Geometry {
   public serialize(): ISerializedRectangle {
     return {
       ...super.serialize(),
-      points: toDoubleDimensionArray(this._points),
+      points: toDoubleDimensionArray(this._points) as any,
     };
   }
 

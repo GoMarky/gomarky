@@ -9,7 +9,7 @@ import { Geometry } from '@/core/objects/geometry/geometry/geometry';
 
 import { DisplayObject } from '@/core/objects/display/display';
 import { Container } from '@/core/objects/geometry/container/container';
-import { IColorBasedProperties, IPointDrawOptions } from '@/core/base/geometry';
+import { IColorBasedProperties, IPointCreateOptions, IPointDrawOptions } from '@/core/base/geometry';
 
 export abstract class BasePoint extends DisplayObject implements IColorBasedProperties {
   public readonly sprite: PIXI.Sprite = new PIXI.Sprite();

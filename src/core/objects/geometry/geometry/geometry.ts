@@ -7,17 +7,16 @@ import { Emitter, Event } from '@/gm/base/common/event';
 
 import { Point, ShapeType, Stage } from '@/core/utils/model';
 
-import {
-  GeometryMoveDirection,
-  Application,
-  ICreateGeometryOptions,
-  IShapeDrawOptions,
-  ISerializedGeometry,
-  PointLike,
-} from '@/core';
-
 import { ControlPoint } from '@/core/objects/geometry/geometry/points/controlpoint';
 import { Container } from '@/core/objects/geometry/container/container';
+import {
+  GeometryMoveDirection,
+  ICreateGeometryOptions,
+  ISerializedGeometry,
+  IShapeDrawOptions,
+  PointLike,
+} from '@/core/base/geometry';
+import { Application } from '@/core/code/application';
 
 const DEFAULT_CHANGE_GEOMETRY_DELAY = 500;
 
@@ -117,7 +116,7 @@ export abstract class Geometry extends Disposable {
       id: this.id,
       color: this.fillColor.toJSON(),
       type: this.type,
-      points: this._points.map(point => [point.x, point.y]),
+      points: this._points.map(point => [point.x, point.y]) as any,
     };
   }
 
@@ -323,7 +322,7 @@ export abstract class Geometry extends Disposable {
         break;
     }
 
-    this.app.viewport.scene.setCurrentEditedLayer(this.parent.parentLayer);
+    this.app.viewport.scene.setCurrentEditedLayer(this.parent.parentLayer as any);
   }
 
   protected doCurrentOnScene(): boolean {
@@ -334,7 +333,7 @@ export abstract class Geometry extends Disposable {
       return true;
     }
 
-    return this.app.viewport.scene.setCurrentLayer(this.parent.parentLayer);
+    return this.app.viewport.scene.setCurrentLayer(this.parent.parentLayer as any);
   }
 
   protected expandHitArea(): this {
