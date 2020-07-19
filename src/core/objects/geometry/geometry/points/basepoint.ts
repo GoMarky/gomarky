@@ -1,18 +1,17 @@
 import * as PIXI from 'pixi.js';
-import { Disposable, IDisposable } from '@/gm/base/common/lifecycle';
+import { IDisposable } from '@/gm/base/common/lifecycle';
 import { generateUuid } from '@/gm/base/common/uuid';
 import { Color } from '@/gm/base/color';
 
-import {
-  Application,
-  Container,
-  IColorBasedProperties,
-  IPointCreateOptions,
-  IPointDrawOptions,
-} from '@/core';
+import { Application } from '@/core/code/application';
+
 import { Geometry } from '@/core/objects/geometry/geometry/geometry';
 
-export abstract class BasePoint extends Disposable implements IColorBasedProperties {
+import { DisplayObject } from '@/core/objects/display/display';
+import { Container } from '@/core/objects/geometry/container/container';
+import { IColorBasedProperties, IPointDrawOptions } from '@/core/base/geometry';
+
+export abstract class BasePoint extends DisplayObject implements IColorBasedProperties {
   public readonly sprite: PIXI.Sprite = new PIXI.Sprite();
   public readonly graphics: PIXI.Graphics = new PIXI.Graphics();
   public radius: number;
@@ -74,7 +73,7 @@ export abstract class BasePoint extends Disposable implements IColorBasedPropert
     return this.sprite.x;
   }
 
-  public set x(value) {
+  public set x(value: number) {
     this.sprite.x = value;
   }
 
@@ -82,7 +81,7 @@ export abstract class BasePoint extends Disposable implements IColorBasedPropert
     return this.sprite.y;
   }
 
-  public set y(value) {
+  public set y(value: number) {
     this.sprite.y = value;
   }
 

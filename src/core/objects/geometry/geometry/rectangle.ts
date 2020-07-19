@@ -7,7 +7,8 @@ import {
   ISerializedRectangle,
   IShapeDrawOptions,
   ShapeType,
-  Stage, toDoubleDimensionArray,
+  Stage,
+  toDoubleDimensionArray,
 } from '@/core';
 
 export class Rectangle extends Geometry {

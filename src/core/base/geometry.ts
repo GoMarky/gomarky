@@ -1,9 +1,7 @@
 import * as PIXI from 'pixi.js';
 import { Color, ISerializedRGBA } from '@/gm/base/color';
-import { ShapeType, Point } from '@/gl/gomarky/utils/model';
-
-import { Position } from '@/gm/base/geojson';
-import { ControlPoint } from '@/gl/gomarky/core/geometry/geometry/points/controlpoint';
+import { Point, ShapeType } from '@/core/utils/model';
+import { ControlPoint } from '@/core/objects/geometry/geometry/points/controlpoint';
 
 export type GeometryMoveDirection = 'left' | 'right' | 'up' | 'down';
 

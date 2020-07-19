@@ -3,7 +3,7 @@ import { Disposable } from '@/gm/base/common/lifecycle';
 
 import { Emitter, Event, GlobalEvent } from '@/gm/base/common/event';
 import { Color, ColorRGBA } from '@/gm/base/color';
-import { Application } from '@/core';
+import { Application } from '@/core/code/application';
 
 export class RangeSelect extends Disposable {
   public readonly grc: PIXI.Graphics = new PIXI.Graphics();

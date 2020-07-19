@@ -1,5 +1,6 @@
-import { Geometry } from '@/gl/gomarky/core/geometry/geometry/geometry';
-import { Container, ContainerGroup } from '@/gl/gomarky';
+import { Geometry } from '@/core/objects/geometry/geometry/geometry';
+import { Container } from '@/core/objects/geometry/container/container';
+import { ContainerGroup } from '@/core/objects/geometry/container/containerGroup';
 
 export interface ICreateContainerOptions {
   geometry: Geometry;

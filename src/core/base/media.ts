@@ -1,7 +1,7 @@
 import { URI } from '@/gm/base/common/uri';
 import PIXI from 'pixi.js';
-import { TextureVideo } from '@/gl/gomarky/core/textures/video';
-import { TextureImage } from '@/gl/gomarky/core/textures/image';
+import { TextureVideo } from '@/core/objects/textures/video';
+import { TextureImage } from '@/core/objects/textures/image';
 
 export type CommonTexture = TextureVideo | TextureImage;
 

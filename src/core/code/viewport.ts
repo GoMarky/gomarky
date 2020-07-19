@@ -3,7 +3,9 @@ import * as PIXI from 'pixi.js';
 import { Disposable } from '@/gm/base/common/lifecycle';
 
 import { Event } from '@/gm/base/common/event';
-import { Application, ICreateViewportOptions, Scene } from '@/core';
+import { Application } from '@/core/code/application';
+import { Scene } from '@/core/code/stage';
+import { ICreateViewportOptions } from '@/core/base/viewport';
 
 export class Viewport extends Disposable {
   private readonly _screen: PIXIViewport;

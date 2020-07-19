@@ -1,3 +1,5 @@
+import { Layer } from '@/core/objects/geometry/layer/layer';
+
 /**
  * @author Teodor_Dre <swen295@gmail.com>
  *
@@ -9,7 +11,6 @@
  *
  * @returns void
  */
-import { Layer } from '@/core';
 
 export const handleSelectBounds = (layer: Layer, selectBounds: PIXI.Rectangle) => {
   const { left: x1, top: y1, right: x2, bottom: y2 } = selectBounds;

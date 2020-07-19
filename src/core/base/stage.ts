@@ -1,8 +1,7 @@
-import { TextureImage } from '@/gl/gomarky/core/textures/image';
-import { TextureVideo } from '@/gl/gomarky/core/textures/video';
-
-import { Container } from '@/gl/gomarky/core/geometry/container/container';
-import { Layer } from '@/gl/gomarky/core/geometry/layer/layer';
+import { Layer } from '@/core/objects/geometry/layer/layer';
+import { TextureImage } from '@/core/objects/textures/image';
+import { TextureVideo } from '@/core/objects/textures/video';
+import { Container } from '@/core/objects/geometry/container/container';
 
 export type CurrentLayerProperty = Layer | null;
 export type CurrentTextureProperty = TextureImage | TextureVideo | null;

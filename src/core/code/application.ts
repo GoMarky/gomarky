@@ -1,8 +1,12 @@
 import * as PIXI from 'pixi.js';
 
 import { Disposable } from '@/gm/base/common/lifecycle';
-import { ICreateViewportOptions, ILayerHooks, IRootLayerHooks, Scene, Viewport } from '@/core';
 import { RangeSelect } from '@/core/code/range';
+import { Viewport } from '@/core/code/viewport';
+
+import { Scene } from '@/core/code/stage';
+import { ICreateViewportOptions } from '@/core/base/viewport';
+import { ILayerHooks, IRootLayerHooks } from '@/core/objects/geometry/layer/common/layer';
 
 export interface IApplication {
   readonly app: PIXI.Application;
