@@ -5,7 +5,13 @@ import { Disposable } from '@/gm/base/common/lifecycle';
 import { Event } from '@/gm/base/common/event';
 import { Application } from '@/core/code/application';
 import { Scene } from '@/core/code/scene';
-import { ICreateViewportOptions } from '@/core/base/viewport';
+
+export interface ICreateViewportOptions {
+  readonly width: number;
+  readonly height: number;
+
+  readonly elementSelector: string;
+}
 
 export class Viewport extends Disposable {
   private readonly _screen: PIXIViewport;
