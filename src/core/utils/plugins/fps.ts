@@ -1,6 +1,7 @@
 import * as PIXI from 'pixi.js';
 import { Disposable } from '@/gm/base/common/lifecycle';
-import { Application, IGLPlugin } from '@/core';
+import { Application } from '@/core/code/application';
+import { IGLPlugin } from '@/core/utils/plugins/index';
 
 export class FPSPlugin extends Disposable implements IGLPlugin {
   private currentFPSInfo: PIXI.Text;

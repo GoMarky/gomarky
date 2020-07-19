@@ -10,7 +10,7 @@ import VueRouter from 'vue-router';
 import VueCompositionApi from '@vue/composition-api';
 
 import PIXI from 'pixi.js';
-import { Application } from '@/core/code/application';
+import * as GM from '@/core';
 
 Vue.use(VueRouter);
 Vue.use(VueCompositionApi);
@@ -62,7 +62,7 @@ async function main(): Promise<void> {
     transparent: false,
   };
 
-  new Application(options);
+  new GM.Application(options);
 }
 
 void main();

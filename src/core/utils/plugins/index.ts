@@ -1,12 +1,17 @@
 import { Disposable } from '@/gm/base/common/lifecycle';
 import { LinkedMap } from '@/gm/base/common/map';
-import { Application, GlCoreError } from '@/core';
+import { Application } from '@/core/code/application';
+import { GlCoreError } from '@/core/utils/errors';
+import { Class } from '@/gm/typings/utils';
+import { FPSPlugin } from '@/core/utils/plugins/fps';
 
 export interface IPluginRegistry {
   register(name: string, Plugin: any): void;
+
   registerAndRun(name: string, Plugin: any): void;
 
   run(name: string): void;
+
   stop(name: string): void;
 
   forEach(
@@ -22,6 +27,7 @@ export interface IPluginRegistry {
 
 export interface IGLPlugin {
   run(): void;
+
   stop(): void;
 
   dispose(): Promise<void>;
@@ -32,16 +38,17 @@ export class PluginRegistry extends Disposable implements IPluginRegistry {
 
   constructor(private readonly stage: Application) {
     super();
+    this.initialize();
   }
 
-  public register(name: string, Plugin: any): void {
+  public register(name: string, plugin: Class): void {
     if (this.plugins.has(name)) {
       throw new GlCoreError(`PluginRegistry#register - plugin ${name} already registered`);
     }
 
-    const plugin = new Plugin(this.stage);
+    const _plugin = new plugin(this.stage);
 
-    this.plugins.set(name, plugin);
+    this.plugins.set(name, _plugin);
   }
 
   public forEach(
@@ -90,5 +97,13 @@ export class PluginRegistry extends Disposable implements IPluginRegistry {
     const plugin = this.plugins.get(name);
 
     void plugin?.dispose();
+  }
+
+  private registerSystemPlugins(): void {
+    this.registerAndRun('FPSPlugin', FPSPlugin);
+  }
+
+  private initialize(): void {
+    this.registerSystemPlugins();
   }
 }

@@ -1,17 +1,16 @@
 import * as PIXI from 'pixi.js';
 
 import { Disposable } from '@/gm/base/common/lifecycle';
-import { RangeSelect } from '@/core/code/range';
 import { Viewport } from '@/core/code/viewport';
 
 import { Scene } from '@/core/code/stage';
 import { ICreateViewportOptions } from '@/core/base/viewport';
 import { ILayerHooks, IRootLayerHooks } from '@/core/objects/geometry/layer/common/layer';
+import { PluginRegistry } from '@/core/utils/plugins';
 
 export interface IApplication {
   readonly app: PIXI.Application;
   readonly viewport: Viewport;
-  readonly select: RangeSelect;
   readonly scene: Scene;
 
   readonly meta?: IMetaOptions;
@@ -27,13 +26,12 @@ export interface IMetaOptions {
 export class Application extends Disposable implements IApplication {
   private readonly _app: PIXI.Application;
   private readonly _viewport: Viewport;
-  private readonly _select: RangeSelect;
+  private readonly _pluginRegistry: PluginRegistry;
 
   constructor(options: PIXI.ApplicationOptions, public meta?: IMetaOptions) {
     super();
 
     this._app = new PIXI.Application(options);
-    this._select = new RangeSelect(this);
 
     const viewport = (this._viewport = this.createViewport({
       width: options.width as number,
@@ -42,14 +40,12 @@ export class Application extends Disposable implements IApplication {
     }));
 
     viewport.createScene();
+
+    this._pluginRegistry = new PluginRegistry(this);
   }
 
   public get app(): PIXI.Application {
     return this._app;
-  }
-
-  public get select(): RangeSelect {
-    return this._select;
   }
 
   public get viewport(): Viewport {
@@ -58,6 +54,10 @@ export class Application extends Disposable implements IApplication {
 
   public get scene(): Scene {
     return this._viewport.scene;
+  }
+
+  public get plugins(): PluginRegistry {
+    return this._pluginRegistry;
   }
 
   private createViewport(options: ICreateViewportOptions): Viewport {

@@ -33,7 +33,6 @@ export class Viewport extends Disposable {
       divWheel: document.querySelector(options.elementSelector) as HTMLCanvasElement,
       interaction: this.app.app.renderer.plugins.interaction,
     });
-
     this.doCreate();
   }
 
@@ -49,6 +48,8 @@ export class Viewport extends Disposable {
     this._scene = new Scene(this.app);
     this.screen.addChild(this._scene.root.containerGroup.frame);
     this.registerTicker();
+
+    this.doCreate();
   }
 
   public scale(pixels: number): number {

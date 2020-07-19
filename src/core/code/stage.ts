@@ -162,7 +162,7 @@ export class Scene extends Disposable {
     const selectedLayers = this.root.layers.filter(layer => layer.selected);
 
     if (!selectedLayers.length) {
-      this.app.select.clearBorderShape();
+      // this.app.select.clearBorderShape();
       return;
     }
 
@@ -219,8 +219,8 @@ export class Scene extends Disposable {
     this.doDrawSelectPreviewShape(new PIXI.Rectangle(minX, minY, maxX - minX, maxY - minY));
   }
 
-  private doDrawSelectPreviewShape(bounds: PIXI.Rectangle): void {
-    this.app.select.drawBorderShape(bounds);
+  private doDrawSelectPreviewShape(_bounds: PIXI.Rectangle): void {
+    // this.app.select.drawBorderShape(bounds);
   }
 
   private findGeometryByCoordinate(point: PIXI.Point): Layer | undefined {
@@ -233,10 +233,6 @@ export class Scene extends Disposable {
   }
 
   private registerListeners(): void {
-    const onBoundsChanged = (event: RangeSelectEvent) => {
-      this.root.layers.forEach(layer => handleSelectBounds(layer, event.bounds));
-    };
-    this.app.select.onBoundsChanged(onBoundsChanged);
 
     const onSingleClick = (event: PIXI.interaction.InteractionEvent) => {
       const point: PIXI.Point = this.app.viewport.screen.toWorld(
@@ -270,10 +266,10 @@ export class Scene extends Disposable {
         }
 
         // Выходим из функции и продолжаем перемещение выделенных фигур в pointerMove
-        return this.app.select.start(point);
+        //this.app.select.start(point);
       }
 
-      if (this.app.select.canStart()) {
+      /*if (this.app.select.canStart()) {
         const layer = this.findGeometryByCoordinate(point);
 
         if (layer) {
@@ -281,7 +277,7 @@ export class Scene extends Disposable {
         }
 
         return this.app.select.start(point);
-      }
+      }*/
     };
     this.app.viewport.screen.on('pointerdown', onSingleClick);
 
@@ -303,7 +299,7 @@ export class Scene extends Disposable {
     this.app.viewport.screen.on('pointerdown', onDoubleClick);
 
     const onPointerMove = (event: PIXI.interaction.InteractionEvent) => {
-      if (this.interaction.canMoveSelectedLayers() && !this.app.select.isStarted) {
+      if (this.interaction.canMoveSelectedLayers() /* && !this.app.select.isStarted */) {
         const selectedLayers = this.root.layers.filter(layer => layer.selected);
 
         if (selectedLayers.length) {
@@ -315,6 +311,7 @@ export class Scene extends Disposable {
         }
       }
     };
+
     this.app.viewport.screen.on('pointermove', onPointerMove);
 
     const onPointerUp = (event: PIXI.interaction.InteractionEvent) => {
@@ -332,7 +329,7 @@ export class Scene extends Disposable {
         layer.container.geometry.container.hitArea.contains(point.x, point.y)
       );
 
-      if (hasSelectedLayers && !this.app.select.isStarted && !pointerUpWasInsideSomeLayer) {
+      if (hasSelectedLayers && /* !this.app.select.isStarted && */ !pointerUpWasInsideSomeLayer) {
         selectedLayers.forEach(layer => {
           layer.container.geometry.stop();
           layer.selected = false;
@@ -342,9 +339,9 @@ export class Scene extends Disposable {
         this.setCurrentEditedLayer(null);
       }
 
-      if (this.app.select.isStarted) {
-        return this.app.select.end();
-      }
+      // if (this.app.select.isStarted) {
+      //   return this.app.select.end();
+      // }
 
       if (this.currentLayer) {
         const stage = this.currentLayer.container.geometry.stage;
@@ -365,9 +362,9 @@ export class Scene extends Disposable {
     this.app.viewport.screen.on('pointerup', onPointerUp);
 
     const onPointerOut = () => {
-      if (this.app.select.canStart()) {
-        this.app.select.end();
-      }
+      // if (this.app.select.canStart()) {
+      //   this.app.select.end();
+      // }
     };
     this.app.viewport.screen.on('pointerout', onPointerOut);
   }
@@ -542,10 +539,10 @@ export class SceneTexture extends Disposable {
 
   private clearTexture(): void {
     if (this._currentTexture instanceof TextureVideo) {
-      this.app.scene.texture.destroyVideo(this._currentTexture);
+      // this.app.scene.texture.destroyVideo(this._currentTexture);
     }
     if (this._currentTexture instanceof TextureImage) {
-      this.app.scene.texture.destroyImage(this._currentTexture);
+      // this.app.scene.texture.destroyImage(this._currentTexture);
     }
   }
 }
